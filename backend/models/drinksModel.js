@@ -36,11 +36,7 @@ const DrinkSchema = new Schema({
     glassType: {
         type: String, // e.g., "Highball", "Martini", "Mug"
         trim: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
-});
+}, { timestamps: true });
 
 export default mongoose.model('Drink', DrinkSchema);
