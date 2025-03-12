@@ -43,4 +43,4 @@ const DrinkSchema = new Schema({
     }
 });
 
-export default mongoose.model('drink', DrinkSchema);
+export default mongoose.model('Drink', DrinkSchema);

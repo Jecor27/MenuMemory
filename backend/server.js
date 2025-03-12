@@ -11,7 +11,8 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+//routes
 app.use('/drinks', drinkRoutes)
 
-
+//connecting to DB and port listening 
 connectDB(app)
