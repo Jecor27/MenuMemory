@@ -7,7 +7,7 @@ export default function Navbar() {
         <nav>
           <ul>
             <li>
-              <NavLink to="/">AllRecipes</NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
               <NavLink to="/foods">Food</NavLink>

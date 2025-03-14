@@ -1,17 +1,33 @@
-import { useState } from "react";
+import react, { useEffect } from "react";
+import useStore from "./components/store";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
+//components
 import Navbar from "./components/Navbar.jsx";
 
-import AllPostsPage from "./pages/AllRecipesPage.jsx";
+//pages
+import AllRecipesPage from "./pages/AllRecipesPage.jsx";
+import DrinkList from "./pages/DrinkList.jsx";
+import HomePage from "./pages/HomePage.jsx";
 
 function App() {
+  const { recipes, fetchRecipes } = useStore();
+
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
+
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<AllPostsPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/AllRecipes"
+          element={<AllRecipesPage recipes={recipes} />}
+        />
+        <Route path="/drinks" element={<DrinkList recipes={recipes} />} />
       </Routes>
     </div>
   );
