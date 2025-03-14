@@ -3,7 +3,7 @@ export default function DrinkList({ recipes }) {
 
   return (
     <div>
-      <h1>Drinks Recipes</h1>
+      <h1>Drinks</h1>
       <ul>
         {drinksRecipes.map((recipe) => (
           <li key={recipe._id}>

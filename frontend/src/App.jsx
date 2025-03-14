@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar.jsx";
 //pages
 import AllRecipesPage from "./pages/AllRecipesPage.jsx";
 import DrinkList from "./pages/DrinkList.jsx";
+import FoodList from "./pages/FoodList.jsx";
 import HomePage from "./pages/HomePage.jsx";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           element={<AllRecipesPage recipes={recipes} />}
         />
         <Route path="/drinks" element={<DrinkList recipes={recipes} />} />
+        <Route path="/foods" element={<FoodList recipes={recipes} />} />
       </Routes>
     </div>
   );
