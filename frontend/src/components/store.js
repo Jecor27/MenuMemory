@@ -1,7 +1,10 @@
 import { create } from 'zustand';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const useStore = create((set) => ({
+
+
     recipes: [],
     fetchRecipes: async () => {
         try {
@@ -19,6 +22,7 @@ const useStore = create((set) => ({
             console.error(err.message);
         }
     },
+
     newFoodRecipe: {
         name: "",
         ingredients: [],
@@ -27,23 +31,20 @@ const useStore = create((set) => ({
     updateNewFoodRecipe: (field, value) => {
         set((state) => ({ newFoodRecipe: { ...state.newFoodRecipe, [field]: value } }));
     },
-    addNewFoodRecipe: async () => {
+    addRecipe: async (recipe) => {
         try {
-            const newRecipe = {
-                name: store.getState().newFoodRecipe.name,
-                ingredients: store.getState().newFoodRecipe.ingredients,
-                instructions: store.getState().newFoodRecipe.instructions,
-            };
-            const response = await axios.post("http://localhost:8080/foods", newRecipe);
-            if (!response.ok) {
-                throw new Error('Error creating post');
+            const response = await axios.post("http://localhost:8080/foods", recipe);
+            if (response.status === 201) {
+                const newRecipeId = response.data._id;
+                set({ recipes: [...useStore.getState().recipes, response.data] });
+                return newRecipeId;
+            } else {
+                throw new Error(`Error creating recipe: ${response.status}`);
             }
-            Navigate(`/foods/${response.data._id}`);
-            store.getState().fetchRecipes();
         } catch (err) {
             console.error(err.message);
         }
     },
 }));
 
-export default useStore;
+export default useStore 

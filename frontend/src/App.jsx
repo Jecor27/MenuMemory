@@ -1,4 +1,4 @@
-import react, { useEffect } from "react";
+import { useEffect } from "react";
 import useStore from "./components/store";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -11,9 +11,11 @@ import AllRecipesPage from "./pages/AllRecipesPage.jsx";
 import DrinkList from "./pages/DrinkListPage.jsx";
 import FoodList from "./pages/FoodListPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import AddNewFoodPage from "./pages/AddNewFoodPage.jsx";
 
 function App() {
-  const { recipes, fetchRecipes } = useStore();
+  const { recipes, fetchRecipes, newFoodRecipe, updateNewFoodRecipe } =
+    useStore();
 
   useEffect(() => {
     fetchRecipes();
@@ -28,6 +30,7 @@ function App() {
           path="/AllRecipes"
           element={<AllRecipesPage recipes={recipes} />}
         />
+        <Route path="/foods/addNewFood" element={<AddNewFoodPage />} />
         <Route path="/drinks" element={<DrinkList recipes={recipes} />} />
         <Route path="/foods" element={<FoodList recipes={recipes} />} />
       </Routes>

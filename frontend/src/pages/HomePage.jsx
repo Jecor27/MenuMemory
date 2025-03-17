@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import AllRecipes from "./allRecipesPage";
+import AllRecipes from "./AllRecipesPage";
 
 export default function HomePage() {
   return (
