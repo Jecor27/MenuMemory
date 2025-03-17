@@ -8,8 +8,8 @@ import Navbar from "./components/Navbar.jsx";
 
 //pages
 import AllRecipesPage from "./pages/AllRecipesPage.jsx";
-import DrinkList from "./pages/DrinkList.jsx";
-import FoodList from "./pages/FoodList.jsx";
+import DrinkList from "./pages/DrinkListPage.jsx";
+import FoodList from "./pages/FoodListPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 
 function App() {
