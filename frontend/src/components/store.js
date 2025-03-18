@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const useStore = create((set) => ({
 
@@ -36,7 +35,7 @@ const useStore = create((set) => ({
             const response = await axios.post("http://localhost:8080/foods", recipe);
             if (response.status === 201) {
                 const newRecipeId = response.data._id;
-                set({ recipes: [...useStore.getState().recipes, response.data] });
+                set((state) => ({ recipes: [...state.recipes, response.data] }));
                 return newRecipeId;
             } else {
                 throw new Error(`Error creating recipe: ${response.status}`);
