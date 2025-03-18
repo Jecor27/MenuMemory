@@ -12,6 +12,7 @@ import DrinkList from "./pages/DrinkListPage.jsx";
 import FoodList from "./pages/FoodListPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import AddNewFoodPage from "./pages/AddNewFoodPage.jsx";
+import DisplayRecipe from "./pages/DisplayRecipe.jsx";
 
 function App() {
   const { recipes, fetchRecipes, newFoodRecipe, updateNewFoodRecipe } =
@@ -29,6 +30,10 @@ function App() {
         <Route
           path="/AllRecipes"
           element={<AllRecipesPage recipes={recipes} />}
+        />
+        <Route
+          path="/foods/:id"
+          element={<DisplayRecipe recipes={recipes} />}
         />
         <Route path="/foods/addNewFood" element={<AddNewFoodPage />} />
         <Route path="/drinks" element={<DrinkList recipes={recipes} />} />
