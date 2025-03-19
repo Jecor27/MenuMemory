@@ -28,6 +28,7 @@ export default function AddNewFoodPage() {
   };
 
   const handleUpdateRecipe = (field, value) => {
+    // console.log(field, value);
     updateNewFoodRecipe(field, value);
   };
 

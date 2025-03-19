@@ -15,12 +15,12 @@ import AddNewFoodPage from "./pages/AddNewFoodPage.jsx";
 import DisplayRecipe from "./pages/DisplayRecipe.jsx";
 
 function App() {
-  const { recipes, fetchRecipes, newFoodRecipe, updateNewFoodRecipe } =
-    useStore();
+  const { recipes, fetchRecipes } = useStore();
 
   useEffect(() => {
     fetchRecipes();
   }, []);
+  //console.log(recipes);
 
   return (
     <div>
