@@ -25,7 +25,7 @@ function App() {
   //console.log(recipes);
 
   return (
-    <div>
+    <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

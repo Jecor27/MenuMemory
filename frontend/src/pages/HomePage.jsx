@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
-import AllRecipes from "./AllRecipesPage";
+
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="page text-center">
       <header>
-        <h1>Whisk & Pour</h1>
+        <h1 className="fw-bold">Whisk & Pour</h1>
       </header>
-      <div>
-        <button>
-          <Link to="/AllRecipes">All Recipes</Link>
+      <div className="section-padding">
+        <button className="button">
+          <Link to="/AllRecipes" className="nav__link">
+            All Recipes
+          </Link>
         </button>
       </div>
     </div>

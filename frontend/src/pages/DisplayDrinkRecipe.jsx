@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+
 export default function DisplayRecipe() {
   const params = useParams();
-  //console.log(params.id);
-
   const [recipe, setRecipe] = useState({});
 
   async function getRecipe() {
@@ -24,10 +23,10 @@ export default function DisplayRecipe() {
   }, [params]);
 
   return (
-    <div>
-      <h2>{recipe.name}</h2>
-      <h3>Ingredients:</h3>
-      <ul>
+    <div className="page">
+      <h2 className="text-center fw-bold">{recipe.name}</h2>
+      <h3 className="fw-bold">Ingredients:</h3>
+      <ul className="flow">
         {recipe.ingredients?.map((ingredient) => (
           <li key={ingredient.name}>
             {ingredient.name} - {ingredient.amount} {ingredient.unit}
@@ -36,7 +35,7 @@ export default function DisplayRecipe() {
       </ul>
       <p>Category: {recipe.category}</p>
       <p>Glass Type: {recipe.glassType}</p>
-      <h3>Instructions:</h3>
+      <h3 className="fw-bold">Instructions:</h3>
       <p>{recipe.instructions}</p>
     </div>
   );
