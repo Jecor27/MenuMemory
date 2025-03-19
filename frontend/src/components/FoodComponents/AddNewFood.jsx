@@ -1,16 +1,33 @@
-export default function NewFoodForm({
-  ingredients,
-  handleAddIngredient,
-  handleRemoveIngredient,
-  handleUpdateIngredient,
-  newFoodRecipe,
-  handleUpdateRecipe,
-  handleSubmit,
-}) {
+// import { useNavigate } from "react-router-dom";
+// import useAddNewFoodStore from "../store/addNewFoodStore";
+// import { useEffect } from "react";
+import useAddNewFoodStore from "../store/addNewFoodStore";
+import { useNavigate } from "react-router-dom";
+
+export default function NewFoodForm() {
+  const {
+    ingredients,
+    newFoodRecipe,
+    handleAddIngredient,
+    handleRemoveIngredient,
+    handleUpdateIngredient,
+    handleUpdateRecipe,
+    handleSubmit,
+  } = useAddNewFoodStore();
+
+  const navigate = useNavigate();
+
+  const handleFormSubmit = async (e) => {
+    const newRecipeId = await handleSubmit(e);
+    if (newRecipeId) {
+      navigate(`/foods/${newRecipeId}`);
+    }
+  };
+
   return (
     <div>
-      <h1>Add New Recipe</h1>
-      <form onSubmit={handleSubmit}>
+      <h1>Add Recipe</h1>
+      <form onSubmit={handleFormSubmit}>
         <label>
           Name:
           <input
@@ -19,12 +36,13 @@ export default function NewFoodForm({
             onChange={(e) => handleUpdateRecipe("name", e.target.value)}
           />
         </label>
+        <br />
         <h2>Ingredients:</h2>
-        {ingredients.map((ingredient, index) => (
+        {ingredients.map((ingredients, index) => (
           <div key={index}>
             <input
               type="text"
-              value={ingredient.name}
+              value={ingredients.name}
               onChange={(e) =>
                 handleUpdateIngredient(index, "name", e.target.value)
               }
@@ -32,7 +50,7 @@ export default function NewFoodForm({
             />
             <input
               type="text"
-              value={ingredient.amount}
+              value={ingredients.amount}
               onChange={(e) =>
                 handleUpdateIngredient(index, "amount", e.target.value)
               }
@@ -40,11 +58,11 @@ export default function NewFoodForm({
             />
             <input
               type="text"
-              value={ingredient.unit}
+              value={ingredients.unit}
               onChange={(e) =>
                 handleUpdateIngredient(index, "unit", e.target.value)
               }
-              placeholder="Unit (optional)"
+              placeholder="Unit"
             />
             <button type="button" onClick={() => handleRemoveIngredient(index)}>
               Remove
@@ -56,13 +74,12 @@ export default function NewFoodForm({
         </button>
         <label>
           Instructions:
-          <input
-            type="text"
+          <textarea
             value={newFoodRecipe.instructions}
             onChange={(e) => handleUpdateRecipe("instructions", e.target.value)}
           />
         </label>
-        <button type="submit">Add Recipe</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

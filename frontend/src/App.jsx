@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import useStore from "./components/store";
+import useStore from "./components/store/store.js";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
