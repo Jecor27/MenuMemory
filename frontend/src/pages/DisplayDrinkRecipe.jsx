@@ -11,9 +11,8 @@ export default function DisplayRecipe() {
   async function getRecipe() {
     try {
       const response = await axios.get(
-        `http://localhost:8080/foods/${params.id}`
+        `http://localhost:8080/drinks/${params.id}`
       );
-      console.log(response.data);
       setRecipe(response.data);
     } catch (err) {
       console.error(err.message);
@@ -31,10 +30,12 @@ export default function DisplayRecipe() {
       <ul>
         {recipe.ingredients?.map((ingredient) => (
           <li key={ingredient.name}>
-            {ingredient.name} - {ingredient.amount}
+            {ingredient.name} - {ingredient.amount} {ingredient.unit}
           </li>
         ))}
       </ul>
+      <p>Category: {recipe.category}</p>
+      <p>Glass Type: {recipe.glassType}</p>
       <h3>Instructions:</h3>
       <p>{recipe.instructions}</p>
     </div>

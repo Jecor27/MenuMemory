@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function NewFoodForm() {
   const {
-    ingredients,
     newFoodRecipe,
     handleAddIngredient,
     handleRemoveIngredient,
@@ -38,11 +37,11 @@ export default function NewFoodForm() {
         </label>
         <br />
         <h2>Ingredients:</h2>
-        {ingredients.map((ingredients, index) => (
+        {newFoodRecipe.ingredients.map((newFoodRecipe, index) => (
           <div key={index}>
             <input
               type="text"
-              value={ingredients.name}
+              value={newFoodRecipe.name}
               onChange={(e) =>
                 handleUpdateIngredient(index, "name", e.target.value)
               }
@@ -50,7 +49,7 @@ export default function NewFoodForm() {
             />
             <input
               type="text"
-              value={ingredients.amount}
+              value={newFoodRecipe.amount}
               onChange={(e) =>
                 handleUpdateIngredient(index, "amount", e.target.value)
               }
@@ -58,7 +57,7 @@ export default function NewFoodForm() {
             />
             <input
               type="text"
-              value={ingredients.unit}
+              value={newFoodRecipe.unit}
               onChange={(e) =>
                 handleUpdateIngredient(index, "unit", e.target.value)
               }
