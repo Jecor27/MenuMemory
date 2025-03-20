@@ -52,9 +52,8 @@ const useAddNewFoodStore = create((set, get) => ({
     handleSubmit: async (e) => {
         e.preventDefault();
         try {
-            const { newFoodRecipe, ingredients } = get();
-            const recipe = { ...newFoodRecipe, ingredients };
-            const response = await axios.post("http://localhost:8080/foods", recipe);
+            const { newFoodRecipe} = get();
+            const response = await axios.post("http://localhost:8080/foods", newFoodRecipe);
             const newRecipeId = response.data._id;
             return newRecipeId;
         } catch (error) {

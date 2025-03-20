@@ -2,14 +2,7 @@ import useAddNewFoodStore from "../store/addNewFoodStore";
 import { useNavigate } from "react-router-dom";
 
 export default function NewFoodForm() {
-  const {
-    newFoodRecipe,
-    handleAddIngredient,
-    handleRemoveIngredient,
-    handleUpdateIngredient,
-    handleUpdateRecipe,
-    handleSubmit,
-  } = useAddNewFoodStore();
+  const {newFoodRecipe, handleAddIngredient, handleRemoveIngredient, handleUpdateIngredient, handleUpdateRecipe, handleSubmit} = useAddNewFoodStore();
 
   const navigate = useNavigate();
 
@@ -36,7 +29,7 @@ export default function NewFoodForm() {
         </label>
         <h2 className="fw-bold">Ingredients:</h2>
         {newFoodRecipe.ingredients.map((ingredient, index) => (
-          <div key={index} className="ingredient flow">
+          <div key={ingredient._id} className="ingredient flow">
             <input
               type="text"
               value={ingredient.name}

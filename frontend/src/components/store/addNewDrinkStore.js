@@ -1,11 +1,10 @@
 import { create } from 'zustand';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 
 const useAddNewDrinkStore = create((set, get) => ({
     newDrinkRecipe: {
         name: "",
-        ingredients: [{ id: uuidv4(), name: "", amount: "", unit: "" }],
+        ingredients: [{ name: "", amount: "", unit: "" }],
         alcoholContent: true,
         category: "Cocktail",
         glassType: "Highball",

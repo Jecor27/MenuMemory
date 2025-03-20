@@ -1,8 +1,31 @@
 import { Link } from "react-router-dom";
 import DrinkList from "../components/DrinkComponents/DrinkList";
+import { useState, useEffect } from "react";
 
-export default function DrinkListPage({ recipes }) {
-  const drinksRecipes = recipes.filter((recipe) => recipe.type === "drink");
+export default function DrinkListPage() {
+
+  const [recipes, setRecipes] = useState([]);
+
+  async function getDrink() {
+    try {
+      const response = await fetch("http://localhost:8080/drinks");
+      const data = await response.json();
+      setRecipes(data);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  useEffect(() => {
+    getDrink();
+  }, []);
+
+  async function handleDelete(id) {
+    await fetch(`http://localhost:8080/drinks/${id}`, {
+      method: "DELETE",
+    });
+    getDrink();
+  }
 
   return (
     <div className="page">
@@ -14,10 +37,10 @@ export default function DrinkListPage({ recipes }) {
           </Link>
         </button>
       </div>
-      <ul>
-        {drinksRecipes.map((recipe) => (
+      <ul className="card">
+        {recipes.map((recipe) => (
           <li key={recipe._id}>
-            <DrinkList recipe={recipe} />
+            <DrinkList recipe={recipe} onDelete={handleDelete}/>
           </li>
         ))}
       </ul>

@@ -1,4 +1,4 @@
-export default function FoodList({ recipe }) {
+export default function FoodList({ recipe, onDelete }) {
   return (
     <div>
       <h2>{recipe.name}</h2>
@@ -12,6 +12,9 @@ export default function FoodList({ recipe }) {
       </ul>
       <h3>Instructions:</h3>
       <p>{recipe.instructions}</p>
+      <button className="delete-btn" onClick={() => onDelete(recipe._id)}>
+        Delete recipe
+      </button>
     </div>
   );
 }

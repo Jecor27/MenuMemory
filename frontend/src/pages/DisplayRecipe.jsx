@@ -13,7 +13,7 @@ export default function DisplayRecipe() {
       const response = await axios.get(
         `http://localhost:8080/foods/${params.id}`
       );
-      console.log(response.data);
+      //console.log(response.data);
       setRecipe(response.data);
     } catch (err) {
       console.error(err.message);
@@ -25,17 +25,17 @@ export default function DisplayRecipe() {
   }, [params]);
 
   return (
-    <div>
-      <h2>{recipe.name}</h2>
-      <h3>Ingredients:</h3>
-      <ul>
+    <div className="page">
+      <h2 className="text-center fw-bold">{recipe.name}</h2>
+      <h3 className="fw-bold">Ingredients:</h3>
+      <ul className="flow">
         {recipe.ingredients?.map((ingredient) => (
           <li key={ingredient.name}>
             {ingredient.name} - {ingredient.amount}
           </li>
         ))}
       </ul>
-      <h3>Instructions:</h3>
+      <h3 className="fw-bold">Instructions:</h3>
       <p>{recipe.instructions}</p>
     </div>
   );

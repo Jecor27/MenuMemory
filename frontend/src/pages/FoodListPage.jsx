@@ -1,8 +1,32 @@
 import { Link } from "react-router-dom";
 import FoodList from "../components/FoodComponents/FoodList.jsx";
+import { useState, useEffect } from "react";
 
-export default function FoodListPage({ recipes }) {
-  const FoodRecipes = recipes.filter((recipe) => recipe.type === "food");
+export default function FoodListPage() {
+
+
+    const [recipes, setRecipes] = useState([]);
+  
+    async function getFood() {
+      try {
+        const response = await fetch("http://localhost:8080/foods");
+        const data = await response.json();
+        setRecipes(data);
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
+  
+    useEffect(() => {
+      getFood();
+    }, []);
+  
+    async function handleDelete(id) {
+      await fetch(`http://localhost:8080/foods/${id}`, {
+        method: "DELETE",
+      });
+      getFood();
+    }
 
   return (
     <div className="page">
@@ -14,10 +38,10 @@ export default function FoodListPage({ recipes }) {
           </Link>
         </button>
       </div>
-      <ul>
-        {FoodRecipes.map((recipe) => (
+      <ul className="card">
+        {recipes.map((recipe) => (
           <li key={recipe._id}>
-            <FoodList recipe={recipe} />
+            <FoodList recipe={recipe} onDelete={handleDelete}/>
           </li>
         ))}
       </ul>

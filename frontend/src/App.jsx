@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import useStore from "./components/store/store.js";
+
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
@@ -17,11 +16,9 @@ import DisplayRecipe from "./pages/DisplayRecipe.jsx";
 import DisplayDrinkRecipe from "./pages/DisplayDrinkRecipe.jsx";
 
 function App() {
-  const { recipes, fetchRecipes } = useStore();
+ 
 
-  useEffect(() => {
-    fetchRecipes();
-  }, []);
+
   //console.log(recipes);
 
   return (
@@ -31,14 +28,14 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route
           path="/AllRecipes"
-          element={<AllRecipesPage recipes={recipes} />}
+          element={<AllRecipesPage/>}
         />
         <Route path="/foods/:id" element={<DisplayRecipe />} />
         <Route path="/drinks/:id" element={<DisplayDrinkRecipe />} />
         <Route path="/drinks/addNewDrink" element={<AddNewDrinkPage />} />
         <Route path="/foods/addNewFood" element={<AddNewFoodPage />} />
-        <Route path="/drinks" element={<DrinkList recipes={recipes} />} />
-        <Route path="/foods" element={<FoodList recipes={recipes} />} />
+        <Route path="/drinks" element={<DrinkList />} />
+        <Route path="/foods" element={<FoodList />} />
       </Routes>
     </div>
   );

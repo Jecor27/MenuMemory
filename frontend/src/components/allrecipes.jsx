@@ -1,6 +1,6 @@
 export default function AllRecipes({ recipe }) {
   return (
-    <div>
+    <div className="card">
       <h2>{recipe.name}</h2>
       <ul>
         {recipe.ingredients.map((ingredient) => (
