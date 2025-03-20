@@ -1,4 +1,3 @@
-
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
@@ -16,20 +15,12 @@ import DisplayRecipe from "./pages/DisplayRecipe.jsx";
 import DisplayDrinkRecipe from "./pages/DisplayDrinkRecipe.jsx";
 
 function App() {
- 
-
-
-  //console.log(recipes);
-
   return (
     <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route
-          path="/AllRecipes"
-          element={<AllRecipesPage/>}
-        />
+        <Route path="/AllRecipes" element={<AllRecipesPage />} />
         <Route path="/foods/:id" element={<DisplayRecipe />} />
         <Route path="/drinks/:id" element={<DisplayDrinkRecipe />} />
         <Route path="/drinks/addNewDrink" element={<AddNewDrinkPage />} />

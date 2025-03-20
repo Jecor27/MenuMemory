@@ -2,7 +2,14 @@ import useAddNewDrinkStore from "../store/addNewDrinkStore";
 import { useNavigate } from "react-router-dom";
 
 export default function NewDrinkForm() {
-  const {newDrinkRecipe, handleAddIngredient, handleRemoveIngredient, handleUpdateIngredient, handleUpdateRecipe, handleSubmit,} = useAddNewDrinkStore();
+  const {
+    newDrinkRecipe,
+    handleAddIngredient,
+    handleRemoveIngredient,
+    handleUpdateIngredient,
+    handleUpdateRecipe,
+    handleSubmit,
+  } = useAddNewDrinkStore();
 
   const navigate = useNavigate();
 

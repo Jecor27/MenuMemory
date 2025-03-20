@@ -9,6 +9,7 @@ export default function AllRecipes({ recipe }) {
           </li>
         ))}
       </ul>
+      {/* Conditionally render the category if it exists */}
       {recipe?.category && <p>Category: {recipe.category}</p>}
       {recipe?.glassType && <p>Glass Type: {recipe.glassType}</p>}
       <p>{recipe.instructions}</p>

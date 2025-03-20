@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const useStore = create((set) => ({
 
-
+    //initial state which is an empty array to hold the recipes
     recipes: [],
     fetchRecipes: async () => {
         try {
@@ -11,11 +11,13 @@ const useStore = create((set) => ({
             //console.log(foodResponse.data)
             const drinkResponse = await axios.get("http://localhost:8080/drinks");
             //console.log(drinkResponse.data)
-
+            
+            //combining the food and drink recipes into a single array
             const recipes = [
                 ...foodResponse.data.map(recipe => ({ ...recipe, type: 'food' })),
                 ...drinkResponse.data.map(recipe => ({ ...recipe, type: 'drink' })),
             ];
+            //then updating the state with the combined array
             set({ recipes });
         } catch (err) {
             console.error(err.message);
