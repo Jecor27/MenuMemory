@@ -1,6 +1,6 @@
 :root {
-    --clr-bg: #f5f5f5;
-    --clr-primary: #3498db;
+    --clr-bg: #646464;
+    --clr-primary: #de27c2;
     --clr-secondary: #2ecc71;
     --clr-accent: #e74c3c;
     --clr-neutral-1000: #333;
@@ -10,8 +10,8 @@
     --clr-neutral-600: #777;
     --clr-neutral-500: #888;
     --clr-neutral-400: #999;
-    --clr-neutral-300: #aaa;
-    --clr-neutral-200: #bbb;
-    --clr-neutral-100: #ccc;
-    --clr-neutral-000: #fff;
+    --clr-neutral-300: #151414;
+    --clr-neutral-200: #000000;
+    --clr-neutral-100: #020202;
+    --clr-neutral-000: #ccc0c0;
 }
