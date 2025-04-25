@@ -22,6 +22,16 @@ export default function Navbar() {
                 Drinks
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/login" className="nav__link">
+                Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/signup" className="nav__link">
+                Sign Up
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>

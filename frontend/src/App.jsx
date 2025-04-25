@@ -13,6 +13,8 @@ import AddNewFoodPage from "./pages/AddNewFoodPage.jsx";
 import AddNewDrinkPage from "./pages/AddNewDrinkPage.jsx";
 import DisplayRecipe from "./pages/DisplayRecipe.jsx";
 import DisplayDrinkRecipe from "./pages/DisplayDrinkRecipe.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/AllRecipes" element={<AllRecipesPage />} />
         <Route path="/foods/:id" element={<DisplayRecipe />} />
         <Route path="/drinks/:id" element={<DisplayDrinkRecipe />} />

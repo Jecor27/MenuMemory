@@ -57,7 +57,7 @@ const useAddNewFoodStore = create((set, get) => ({
         e.preventDefault();
         try {
             const { newFoodRecipe } = get(); //get the current state of the new food recipe
-            const response = await axios.post("http://localhost:8080/foods", newFoodRecipe);
+            const response = await axios.post("http://localhost:8080/api/foods", newFoodRecipe);
             const newRecipeId = response.data._id;
             return newRecipeId;
         } catch (error) {

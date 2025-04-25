@@ -7,9 +7,9 @@ const useStore = create((set) => ({
     recipes: [],
     fetchRecipes: async () => {
         try {
-            const foodResponse = await axios.get("http://localhost:8080/foods");
+            const foodResponse = await axios.get("http://localhost:8080/api/foods");
             //console.log(foodResponse.data)
-            const drinkResponse = await axios.get("http://localhost:8080/drinks");
+            const drinkResponse = await axios.get("http://localhost:8080/api/drinks");
             //console.log(drinkResponse.data)
             
             //combining the food and drink recipes into a single array

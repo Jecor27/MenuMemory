@@ -48,7 +48,7 @@ const useAddNewDrinkStore = create((set, get) => ({
         e.preventDefault();
         try {
             const { newDrinkRecipe } = get();
-            const response = await axios.post("http://localhost:8080/drinks", newDrinkRecipe);
+            const response = await axios.post("http://localhost:8080/api/drinks", newDrinkRecipe);
             const newRecipeId = response.data._id;
             return newRecipeId;
         } catch (error) {
