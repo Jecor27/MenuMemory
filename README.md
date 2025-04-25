@@ -1,9 +1,9 @@
-## Capstone
+## MenuMemory
 * when downloading files, npm install for front end and backend
 * npm run dev for frontend
 * nodemon for backend
-# Whisk & Pour
-The purpose of whisk & pour was to be able to store recipes you found important. 
+# MenuMemory
+The purpose of MenuMemory was to be able to store recipes you found important. 
 I wanted something that would be useful to myself and others, authentication will be add and more customization. 
 
 # Features

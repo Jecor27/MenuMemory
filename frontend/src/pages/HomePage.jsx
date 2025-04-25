@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <div className="page text-center">
       <header>
-        <h1 className="fw-bold">Whisk & Pour</h1>
+        <h1 className="fw-bold">MenuMemory</h1>
       </header>
       <div className="section-padding">
         <button className="button">
