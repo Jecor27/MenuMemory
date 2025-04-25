@@ -11,7 +11,7 @@ export default function DisplayRecipe() {
   async function getRecipe() {
     try {
       const response = await axios.get(
-        `http://localhost:8080/foods/${params.id}`
+        `http://localhost:8080/api/foods/${params.id}`
       );
       //console.log(response.data);
       setRecipe(response.data);

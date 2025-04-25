@@ -9,7 +9,7 @@ export default function FoodListPage() {
   
     async function getFood() {
       try {
-        const response = await fetch("http://localhost:8080/foods");
+        const response = await fetch("http://localhost:8080/api/foods");
         const data = await response.json();
         setRecipes(data);
       } catch (err) {
@@ -22,7 +22,7 @@ export default function FoodListPage() {
     }, []);
   
     async function handleDelete(id) {
-      await fetch(`http://localhost:8080/foods/${id}`, {
+      await fetch(`http://localhost:8080/api/foods/${id}`, {
         method: "DELETE",
       });
       getFood();

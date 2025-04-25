@@ -3,5 +3,6 @@
 @import "./components.css";
 @import "./typography.css";
 @import "./utilities.css";
+@import "error.css";
 /* 
 @import "./animations.css"; */

@@ -1,39 +1,38 @@
 import { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, error, isLoading } = useLogin();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const response = await fetch("http://localhost:8080/api/users/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-        });
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(email, password);
+  };
 
-    return(
-        <form className="Login" onSubmit={handleSubmit}>
-            <h3>Login</h3>
-            <label>Email:</label>
-            <input
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-            />
-            <label>Password:</label>
-            <input
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-            />
-            <button className="btn">Login</button>
-            <p>Don't have an account? <a href="/signup">Sign up</a></p>
-        </form>
-    )
-}
+  return (
+    <form className="Login" onSubmit={handleSubmit}>
+      <h3>Login</h3>
+      <label>Email:</label>
+      <input
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
+      <label>Password:</label>
+      <input
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+      />
+      <button disabled={isLoading} className="btn">Login</button>
+      <p>
+        Don't have an account? <a href="/signup">Sign up</a>
+      </p>
+        {error && <div className="error">{error}</div>}
+    </form>
+  );
+};
 
 export default Login;

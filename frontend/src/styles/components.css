@@ -36,6 +36,16 @@
     transition: background-color 0.3s;
 }
 
+nav button{
+    background-color: var(--clr-primary);
+    color: var(--clr-neutral-000);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
 .nav__link:hover {
     background-color: var(--clr-secondary);
 }

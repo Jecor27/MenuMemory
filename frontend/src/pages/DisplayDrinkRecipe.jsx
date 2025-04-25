@@ -10,7 +10,7 @@ export default function DisplayRecipe() {
   async function getRecipe() {
     try {
       const response = await axios.get(
-        `http://localhost:8080/drinks/${params.id}`
+        `http://localhost:8080/api/drinks/${params.id}`
       );
       setRecipe(response.data);
     } catch (err) {

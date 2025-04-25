@@ -8,7 +8,7 @@ export default function DrinkListPage() {
 
   async function getDrink() {
     try {
-      const response = await fetch("http://localhost:8080/drinks");
+      const response = await fetch("http://localhost:8080/api/drinks");
       const data = await response.json();
       setRecipes(data);
     } catch (err) {
@@ -21,7 +21,7 @@ export default function DrinkListPage() {
   }, []);
 
   async function handleDelete(id) {
-    await fetch(`http://localhost:8080/drinks/${id}`, {
+    await fetch(`http://localhost:8080/api/drinks/${id}`, {
       method: "DELETE",
     });
     getDrink();
