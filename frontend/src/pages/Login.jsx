@@ -5,8 +5,8 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (e) => {
-        e.preventDafault();
-        const response = await fetch("http://localhost:8080/api/users/Login", {
+        e.preventDefault();
+        const response = await fetch("http://localhost:8080/api/users/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
