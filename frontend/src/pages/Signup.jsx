@@ -1,18 +1,14 @@
 import { useState } from "react";
+import { useSignup } from "../hooks/useSignup";
 
 const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { signup, error, isLoading} = useSignup();
 
     const handleSubmit = async (e) => {
         e.preventDafault();
-        const response = await fetch("http://localhost:8080/api/users/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-        });
+        await signup(email, password);
     }
 
     return(
@@ -30,8 +26,9 @@ const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
             />
-            <button className="btn">Sign up</button>
+            <button disabled={isLoading} className="btn">Sign up</button>
             <p>Already have an account? <a href="/login">Login</a></p>
+            {error && <div className="error">{error}</div>}
         </form>
     )
 }
