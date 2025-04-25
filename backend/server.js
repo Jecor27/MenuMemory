@@ -4,6 +4,7 @@ import 'dotenv/config'
 import connectDB from './db.js'
 import drinkRoutes from './routes/drinkRoutes.js'
 import foodRoutes from './routes/foodRoutes.js'
+import userRoutes from './routes/user.js'
 
 const app = express()
 
@@ -13,8 +14,9 @@ app.use(express.json())
 app.use(cors())
 
 //routes
-app.use('/drinks', drinkRoutes)
-app.use('/foods', foodRoutes)
+app.use('/api/drinks', drinkRoutes)
+app.use('/api/foods', foodRoutes)
+app.use('/api/user', userRoutes)
 
 //connecting to DB and port listening 
 connectDB(app)
