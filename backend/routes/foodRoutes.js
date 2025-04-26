@@ -1,7 +1,11 @@
 import express from 'express';
 import Foods from '../models/foodsModel.js'
+import requireAuth from '../middleware/requireAuth.js'
 
 const router = express.Router();
+// require auth for all routes
+router.use(requireAuth)
+
 
 router.get("/", async (req, res) => {
 
