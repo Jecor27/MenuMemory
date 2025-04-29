@@ -1,14 +1,15 @@
-import { NavLink } from "react-router-dom";
-import { useLogout } from "../hooks/useLogout";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { NavLink, useNavigate } from "react-router-dom";
+import useAuthStore from "../store/authStore";
 
 export default function Navbar() {
-  const { logout } = useLogout();
-  const { user } = useAuthContext();
+  const { user, logout } = useAuthStore();
+  const navigate = useNavigate();
+
   const handleClick = () => {
     logout();
-    window.location.href = "/";
+    navigate("/");
   };
+
   return (
     <header className="header">
       <div className="header__inner">
