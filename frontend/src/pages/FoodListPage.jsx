@@ -1,47 +1,41 @@
 import { Link } from "react-router-dom";
 import FoodList from "../components/FoodComponents/FoodList.jsx";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import useRecipeStore from "../components/store/recipeStore.js";
+import useAuthStore from "../components/store/authStore";
 
 export default function FoodListPage() {
+  const { foodRecipes, getFoodRecipes, deleteRecipe, isLoading, error } =
+    useRecipeStore();
+  const { user } = useAuthStore();
 
+  useEffect(() => {
+    getFoodRecipes();
+  }, [getFoodRecipes]);
 
-    const [recipes, setRecipes] = useState([]);
-  
-    async function getFood() {
-      try {
-        const response = await fetch("http://localhost:8080/api/foods");
-        const data = await response.json();
-        setRecipes(data);
-      } catch (err) {
-        console.error(err.message);
-      }
-    }
-  
-    useEffect(() => {
-      getFood();
-    }, []);
-  
-    async function handleDelete(id) {
-      await fetch(`http://localhost:8080/api/foods/${id}`, {
-        method: "DELETE",
-      });
-      getFood();
-    }
+  const handleDelete = async (id) => {
+    await deleteRecipe(id, "food");
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="page">
       <h1 className="text-center fw-bold">Grub</h1>
-      <div className="section-padding">
-        <button className="button">
-          <Link to="/foods/addNewFood" className="nav__link">
-            Add New Recipe
-          </Link>
-        </button>
-      </div>
+      {user && (
+        <div className="section-padding">
+          <button className="button">
+            <Link to="/foods/addNewFood" className="nav__link">
+              Add New Recipe
+            </Link>
+          </button>
+        </div>
+      )}
       <ul className="card">
-        {recipes.map((recipe) => (
+        {foodRecipes.map((recipe) => (
           <li key={recipe._id}>
-            <FoodList recipe={recipe} onDelete={handleDelete}/>
+            <FoodList recipe={recipe} onDelete={user ? handleDelete : null} />
           </li>
         ))}
       </ul>

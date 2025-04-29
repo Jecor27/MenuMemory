@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import axios from 'axios';
+import apiClient from '../../utils/apiClient';
 
 const useAddNewFoodStore = create((set, get) => ({
 
@@ -57,11 +57,16 @@ const useAddNewFoodStore = create((set, get) => ({
         e.preventDefault();
         try {
             const { newFoodRecipe } = get(); //get the current state of the new food recipe
-            const response = await axios.post("http://localhost:8080/api/foods", newFoodRecipe);
+            //using the apiclient instead of axios directly
+            const response = await apiClient.post("/foods", newFoodRecipe);
             const newRecipeId = response.data._id;
             return newRecipeId;
         } catch (error) {
             console.error('Error submitting recipe:', error);
+            if (error.response?.status === 401) {
+                alert("Your session has expired. Please login again.");
+            }
+            throw error;
         }
     },
 }));

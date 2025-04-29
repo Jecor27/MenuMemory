@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 //components
 import Navbar from "./components/Navbar.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 //pages
 import AllRecipesPage from "./pages/AllRecipesPage.jsx";
@@ -27,8 +28,23 @@ function App() {
         <Route path="/AllRecipes" element={<AllRecipesPage />} />
         <Route path="/foods/:id" element={<DisplayRecipe />} />
         <Route path="/drinks/:id" element={<DisplayDrinkRecipe />} />
-        <Route path="/drinks/addNewDrink" element={<AddNewDrinkPage />} />
-        <Route path="/foods/addNewFood" element={<AddNewFoodPage />} />
+
+        <Route
+          path="/drinks/addNewDrink"
+          element={
+            <ProtectedRoute>
+              <AddNewDrinkPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/foods/addNewFood"
+          element={
+            <ProtectedRoute>
+              <AddNewFoodPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/drinks" element={<DrinkList />} />
         <Route path="/foods" element={<FoodList />} />
       </Routes>

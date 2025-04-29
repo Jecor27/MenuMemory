@@ -48,11 +48,18 @@ const useAddNewDrinkStore = create((set, get) => ({
         e.preventDefault();
         try {
             const { newDrinkRecipe } = get();
-            const response = await axios.post("http://localhost:8080/api/drinks", newDrinkRecipe);
+            // Use apiClient instead of direct axios
+            const response = await apiClient.post("/drinks", newDrinkRecipe);
             const newRecipeId = response.data._id;
             return newRecipeId;
         } catch (error) {
             console.error('Error submitting recipe:', error);
+            // You can handle auth errors here or let the apiClient handle them
+            if (error.response?.status === 401) {
+                alert("Your session has expired. Please login again.");
+                // The redirect will be handled by the apiClient
+            }
+            throw error;
         }
     },
 

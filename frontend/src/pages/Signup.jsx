@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useAuthStore from "../store/authStore";
+import useAuthStore from "../components/store/authStore";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ const Signup = () => {
         value={password}
       />
       <button disabled={isLoading} className="btn">
-      {isLoading ? 'Signing up...' : 'Sign up'}
+        {isLoading ? "Signing up..." : "Sign up"}
       </button>
       <p>
         Already have an account? <a href="/login">Login</a>
